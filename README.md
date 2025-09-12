@@ -4,6 +4,7 @@ A collection of developer notes, code snippets and coding examples to improve th
 + [JavaScript](#javascript)
     + [Variables](#variables)
     + [Functions](#functions)
++ [Express](#express)
 
 ## JavaScript
 
@@ -78,4 +79,32 @@ const fahrenheitToCelsius = fahrenheit => {
 }
 
 console.log(fahrenheitToCelsius(100));
+```
+
+## Express
+`Express.js` (or just `Express`) is a minimal, unopinionated web framework for `Node.js`.
+
+Think of it as a lightweight toolkit that makes it much easier to build: `web servers`, `APIs`, and `full-stack apps` with `Node`.
+
+A simple `Express` example, within a file named `index.js`:
+
+```javascript
+const express = require('express');
+const app = express();
+
+// Middleware to parse JSON bodies
+app.use(express.json());
+
+// Route
+app.get('/', (req, res) => {
+    res.send("Hello, Express");
+});
+
+app.listen(3000, () => console.log("http://localhost:3000"));
+```
+
+To run this code, which can then be opened in: `http://localhost:3000` using port `3000`:
+
+```shell
+$ node index.js
 ```
