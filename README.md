@@ -112,6 +112,27 @@ const fahrenheitToCelsius = fahrenheit => {
 console.log(fahrenheitToCelsius(100));
 ```
 
+An `IIFE`, or `Immediately Invoked Function Expression`, is a common JavaScript design pattern used by most popular libraries (`jQuery`, `Backbone.js`, `Modernizr`, etc.) to place all library code inside of a local scope. In other words, it protects the module's scope from the environment in which it is placed. An `IIFE` is immediately called at runtime, they only run once and cannot be called again. An `IIFE` is a syntax that makes possible the execution of a function as soon as it is defined.
+
+```javascript
+(function() {
+    console.log("Hello from IIFE");
+})();
+
+// Modern syntax
+(() => {
+  console.log("Hello from the modern IIFE");
+})();
+```
+
+In a library, or framework, it can be used to pass in the `window` and `document` object into the local scope to keep them separate from the global scope.
+
+```javascript
+((w, d) => {
+  console.log("Hello from the modern IIFE");
+})(window, document);
+```
+
 ### Select Elements
 Elements in the `DOM (Document Object Model)`, can be selected using JavaScript.
 
