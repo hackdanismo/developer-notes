@@ -2,12 +2,42 @@
 A collection of developer notes, code snippets and coding examples to improve the development experience and sharing of knowledge.
 
 + [JavaScript](#javascript)
+    + [Scripts](#scripts)
+    + [Comments](#comments)
     + [Variables](#variables)
     + [Functions](#functions)
     + [Select Elements](#select-elements)
+    + [Events](#events)
+    + [Array](#array)
+    + [Objects](#objects)
 + [Express](#express)
 
 ## JavaScript
+
+### Scripts
+Adding `JavaScript` to `HTML` using a `<script>` tag before the closing `</body>` tag:
+
+```html
+    <!-- Rest of the HTML document, here -->
+
+<script src="scripts/script.js"></script>
+</body>
+</html>
+```
+
+### Comments
+`JavaScript` supports two types of comment. A `single-line` and a `multi-line` comment.
+
+```javascript
+// This is a single-line comment
+
+/* This is also a comment */
+
+/*
+ * This is a multi-line comment.
+ * The comment can be over multiple lines making it easier to read.
+ */
+```
 
 ### Variables
 Variables are containers used to store data in JavaScript.
@@ -82,7 +112,7 @@ const fahrenheitToCelsius = fahrenheit => {
 console.log(fahrenheitToCelsius(100));
 ```
 
-## Select Elements
+### Select Elements
 Elements in the `DOM (Document Object Model)`, can be selected using JavaScript.
 
 To select by **ID**:
@@ -143,6 +173,65 @@ const list = document.querySelector('ul');
 console.log(list.children);   // All <li> inside
 console.log(list.parentNode); // The parent element
 console.log(list.nextElementSibling); // The element after it
+```
+
+### Events
+JavaScript code can be triggered based on events:
+
+```javascript
+const button = document.querySelector(".js-btn");
+
+button.addEventListener("click", () => {
+    alert("The button has been clicked");
+});
+```
+
+Or looping over multiple elements with the same class/selector:
+
+```javascript
+const button = document.querySelectorAll(".js-button");
+
+button.forEach(selectedButton => {
+	selectedButton.addEventListener("click", () => {
+		alert("A specific button has been clicked");
+	});
+});
+```
+
+### Array
+There are a few ways to create an `array`:
+
+```javascript
+let empty = [];        // An array with no elements
+let primes =[2, 3, 5, 7, 11];        // An array with 5 numeric elements
+let misc = [1.1, true, "a"];        // 3 elements of various types
+```
+
+### Objects
+When a function is defined inside of an object it is called a `method`. Prior to ES6, a method would be defined as an object literal.
+
+```javascript
+let square = {
+    area: function() {
+        return this.side * this.side
+    },
+    side: 10
+};
+
+square.area()    // 100
+```
+
+In ES6, has been extended to allow a shortcut where the `function` keyword no longer needs to be used along with the colon:
+
+```javascript
+let square = {
+    area() {
+        return this.side * this.side
+    },
+    side: 10
+};
+
+square.area()    // 100
 ```
 
 ## Express
