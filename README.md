@@ -4,6 +4,7 @@ A collection of developer notes, code snippets and coding examples to improve th
 + [JavaScript](#javascript)
     + [Variables](#variables)
     + [Functions](#functions)
+    + [Select Elements](#select-elements)
 + [Express](#express)
 
 ## JavaScript
@@ -79,6 +80,69 @@ const fahrenheitToCelsius = fahrenheit => {
 }
 
 console.log(fahrenheitToCelsius(100));
+```
+
+## Select Elements
+Elements in the `DOM (Document Object Model)`, can be selected using JavaScript.
+
+To select by **ID**:
+
+```html
+<h1 id="title">Hello World</h1>
+```
+
+```javascript
+const title = document.getElementById("title");
+console.log(title.textContent);        // Hello World
+```
+
+To select by **class**:
+
+```html
+<p class="item">First</p>
+<p class="item">Second</p>
+```
+
+```javascript
+const items = document.getElementsByClassName("item");
+console.log(items[0].textContent);        // First
+```
+
+To select by **tag name**:
+
+```html
+<li>One</li>
+<li>Two</li>
+```
+
+```javascript
+const listItems = document.getElementsByTagName("li");
+console.log(listItems.length);        // 2
+```
+
+To select elements using the modern `querySelector` and `querySelectorAll` methods:
+
+```html
+<div class="card">Card A</div>
+<div class="card">Card B</div>
+```
+
+```javascript
+const firstCard = document.querySelector('.card'); // first match
+console.log(firstCard.textContent); // "Card A"
+
+const allCards = document.querySelectorAll('.card'); // NodeList of all
+allCards.forEach(card => console.log(card.textContent));
+```
+
+Travese from a selected element:
+
+```javascript
+const list = document.querySelector('ul');
+
+console.log(list.children);   // All <li> inside
+console.log(list.parentNode); // The parent element
+console.log(list.nextElementSibling); // The element after it
 ```
 
 ## Express
