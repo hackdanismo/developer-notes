@@ -86,6 +86,22 @@ console.log(fahrenheitToCelsius(100));
 
 Think of it as a lightweight toolkit that makes it much easier to build: `web servers`, `APIs`, and `full-stack apps` with `Node`.
 
+To install `Express`, `Node` needs to be installed/setup and we also need a `package.json` file in the root of the project folder. It is recommended to have a `.gitignore` file created in the project before installing packages to avoid the `node_modules` directory being added to version control (e.g. `GitHub`).
+
+```shell
+# Make a folder for the project
+$ mkdir project
+$ cd project
+# Generate a package.json file
+$ npm init -y
+
+# Check the version of Node installed
+$ node --version
+
+# Install Express as a dependency package, creating the node_modules folder
+$ npm install express
+```
+
 A simple `Express` example, within a file named `index.js`:
 
 ```javascript
