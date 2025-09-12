@@ -198,6 +198,27 @@ button.forEach(selectedButton => {
 });
 ```
 
+This can be extended further to set an active class on a selected element that is clicked:
+
+```html
+<button class="js-button btn--active">Button</button>
+<button class="js-button">Button</button>
+<button class="js-button">Button</button>
+```
+
+```javascript
+const button = document.querySelectorAll(".js-button");
+
+button.forEach(selectedButton => {
+	selectedButton.addEventListener("click", () => {
+		// Remove the active class from all buttons
+		button.forEach(btn => btn.classList.remove("btn--active"));
+		// Add the active class to the button being clicked
+		this.classList.add("btn--active");
+	});
+});
+```
+
 ### Array
 There are a few ways to create an `array`:
 
