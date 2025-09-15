@@ -12,6 +12,7 @@ A collection of developer notes, code snippets and coding examples to improve th
     + [Objects](#objects)
 + [Express](#express)
 + [Next](#next)
++ [Svelte](#svelte)
 + [SQLite](#sqlite)
 
 ## JavaScript
@@ -379,6 +380,42 @@ Build for production:
 ```shell
 $ npm run build
 $ npm run start
+```
+
+## Svelte
+To setup `Svelte`, we need to make sure `Node` version `18` or later is installed:
+
+```shell
+$ node --version
+```
+
+Begin by creating a new `Svelte` project. The following command will setup a `Sveltekit` project, not just `Svelte`. `Svelte` is a UI framework, like `React` or `Vue`. `Sveltekit` is an application framework that sits on top of `Svelte`. It is the recommended way to built apps in `Svelte`.
+
+```shell
+$ npm create svelte@latest my-app
+
+# Using Yarn
+yarn create svelte@latest my-app
+# Using pnpm
+pnpm create svelte@latest my-app
+```
+
+Once installed, use the CLI to pick the options needed:
+
+```shell
+$ cd my-app
+$ npm install
+
+$ npm run dev
+```
+
+Then open `http://localhost:5173` in the browser to see the running app locally.
+
+Build for production:
+
+```shell
+$ npm run build
+$ npm run preview
 ```
 
 ## SQLite
