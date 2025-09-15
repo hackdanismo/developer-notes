@@ -12,6 +12,7 @@ A collection of developer notes, code snippets and coding examples to improve th
     + [Objects](#objects)
 + [Express](#express)
 + [Next](#next)
++ [SQLite](#sqlite)
 
 ## JavaScript
 
@@ -378,4 +379,23 @@ Build for production:
 ```shell
 $ npm run build
 $ npm run start
+```
+
+## SQLite
+On macOS, `SQLite` usually comes pre-installed. Check if `SQLite` is installed:
+
+```shell
+$ sqlite3 --version
+```
+
+If, SQLite is installed, we should see something like this in the terminal:
+
+```shell
+$ 3.45.2 2024-03-12 13:15:05 ...
+```
+
+`SQLite` can be installed on macOS using `Homebrew`:
+
+```shell
+$ brew install sqlite
 ```
