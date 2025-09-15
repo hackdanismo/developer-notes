@@ -13,6 +13,7 @@ A collection of developer notes, code snippets and coding examples to improve th
 + [Express](#express)
 + [Next](#next)
 + [Svelte](#svelte)
++ [Prisma](#prisma)
 + [SQLite](#sqlite)
 
 ## JavaScript
@@ -419,6 +420,60 @@ Build for production:
 ```shell
 $ npm run build
 $ npm run preview
+```
+
+## Prisma
+`Prisma` is an ORM. Install as a `devDependency` package. This will be listed in the `package.json` file of the project. We can also install `@prisma/client` as a dependency:
+
+```shell
+$ npm install prisma --save-dev
+$ npm install @prisma/client
+```
+
+Configure `Prisma` to be setup for the database. In this example it's `SQLite`. This will create a `prisma/` folder in the project and a `.env` file with a default `SQLite` connection string.
+
+```shell
+$ npx prisma init --datasource-provider sqlite
+```
+
+The connection string in the `.env` file:
+
+```
+DATABASE_URL="file:./dev.db"
+```
+
+Edit the `prisma/schema.prisma` file to create the schema:
+
+```
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Organisation {
+  id           Int      @id @default(autoincrement())
+  name         String
+  slug         String   @unique
+  contactEmail String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+```
+
+Then create the database and generate the client. This creates the `prisma/dev.db` file and applies the schema:
+
+```shell
+$ npx prisma migrate dev --name init
+```
+
+If we want to view the database in a GUI, run the studio:
+
+```shell
+$ npx prisma studio
 ```
 
 ## SQLite
