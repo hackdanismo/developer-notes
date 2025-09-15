@@ -360,7 +360,10 @@ $ node --version
 Once checked, `Next` can be installed:
 
 ```shell
+# Deprecated
 $ npx create-next-app@latest my-app
+# Now replaced with:
+$ npx sv create
 
 # Using Yarn
 $ yarn create next-app my-app
