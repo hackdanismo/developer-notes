@@ -301,21 +301,46 @@ $ npm install express
 A simple `Express` example, within a file named `index.js`:
 
 ```javascript
+// Import the Express framework from node_modules
 const express = require('express');
+// Create an Express application
 const app = express();
 
-// Middleware to parse JSON bodies
+// Middleware: used to tell Express to automatically parse JSON request bodies
 app.use(express.json());
 
-// Route
+// Route acts as an endpoint in an API. This returns a string of: Hello, Express
 app.get('/', (req, res) => {
     res.send("Hello, Express");
 });
 
+// Start the Express server, listens on selected port
 app.listen(3000, () => console.log("http://localhost:3000"));
 ```
 
-To run this code, which can then be opened in: `http://localhost:3000` using port `3000`:
+To run this code, which can then be opened in: `http://localhost:3000` using port `3000`.
+
+We can change this code further, if needed:
+
+```javascript
+// Set the port, default is 4000, if no environment variable is provided
+const PORT = process.env.PORT || 4000;
+// Start the Express server, listens on selected port
+app.listen(PORT, () => console.log(`Server is running on: http://localhost:${PORT}`));
+```
+
+In an API, we may want to have an endpoint to check the status of the server and the health of the service:
+
+```javascript
+// Endpoint: Check the health of the service and return a JSON object to test the server is running
+app.get("/health", (_req, res) => {
+    res.json({ ok: true, service: "organisation-api", timestamp: now() });
+});
+```
+
+This route would be reached by using the URL: `http://localhost:4000/health`. The port has been changed to `4000` in this example.
+
+To run this code:
 
 ```shell
 $ node index.js
