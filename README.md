@@ -11,6 +11,7 @@ A collection of developer notes, code snippets and coding examples to improve th
     + [Array](#array)
     + [Objects](#objects)
 + [Express](#express)
++ [Next](#next)
 
 ## JavaScript
 
@@ -318,4 +319,38 @@ To run this code, which can then be opened in: `http://localhost:3000` using por
 
 ```shell
 $ node index.js
+```
+
+## Next
+`Next` or `Next.js` as it's sometimes called, is a `React` framework built by `Vercel`.
+
+`Next` needs `Node` version `18.7` or greater. To check the version of `Node` installed:
+
+```shell
+$ node --version
+```
+
+Once checked, `Next` can be installed:
+
+```shell
+$ npx create-next-app@latest my-app
+
+# Using Yarn
+$ yarn create next-app my-app
+# Using pnpm
+$ pnpm create next-app my-app
+```
+
+Start the development server:
+
+```shell
+$ cd my-app
+$ npm run dev
+```
+
+Build for production:
+
+```shell
+$ npm run build
+$ npm run start
 ```
