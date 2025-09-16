@@ -10,6 +10,7 @@ A collection of developer notes, code snippets and coding examples to improve th
     + [Events](#events)
     + [Array](#array)
     + [Objects](#objects)
++ [Cookies](#cookies)
 + [Express](#express)
 + [Next](#next)
 + [Svelte](#svelte)
@@ -278,6 +279,68 @@ let square = {
 };
 
 square.area()    // 100
+```
+
+## Cookies
+`Cookies` are small pieces of data that websites store on a user's browser or device. They're mainly used to store information between sessions and provide a smoother, personalised experience.
+
++ Cookies usually contain a `key-value pair` e.g. **used_id=12345**
++ Sometimes expiry dates, session information or preferences
++ As they are in plain text, recommended to not store personal information inside of a cookie
+
+Common uses of cookies:
+
++ **Session information** - keeping users logged in after using credentials, remembering items in a shopping cart.
++ **Personalisation** - store user preferences (e.g. language, theme), storing tailored content.
++ **Tracking & Analytics** - monitoring user behaviours across pages or websites, used for targeted advertisements.
+
+Types of cookies:
+
++ **Session cookies** - temporary, deleted when the user closes their browser.
++ **Persistent cookies** - stored on disk until they expire and/or are deleted.
++ **First-party cookies** - set by the website you are visiting.
++ **Third-party cookies** - set by domains other than the one you are visiting. Commonly used in ads and tracking.
+
+Third-party cookies can track users across multiple sites, raising privacy issues. Modern browsers are phasing out or restricting third-party cookies (e.g., Safari, Firefox, and soon Chrome). Consent has to be given for any third-party cookies being applied that are either not for security or user experience (tracking & analytics).
+
+### Set a Cookie
+A cookie can be set using `JavaScript`:
+
+```javascript
+document.cookie = "username=JohnDoe";
+```
+
+This creates a cookie named `username` with the value `JohnDoe`.
+
+We can add more options:
+
+```javascript
+document.cookie = "username=JohnDoe; expires=Fri, 20 Sep 2025 12:00:00 UTC; path=/";
+document.cookie = "theme=dark; expires=Fri, 20 Sep 2025 12:00:00 UTC; path=/; secure; SameSite=Strict";
+```
+
++ **expires** - sets when the cookie should expire (if omitted, it becomes a session cookie and disappears when the browser closes).
++ **path** - defines which paths of the site the cookie is valid for (/ means the whole domain).
++ **domain** - specify domain (e.g., `.example.com` for subdomains).
++ **secure** - cookie will only be sent over `HTTPS`.
++ **SameSite** - controls cross-site behavior (`Strict`, `Lax`, `None`).
+
+#### Domain
+
+When you set a cookie, the `Domain` attribute controls which hosts can access it.
+
++ If you don't specify the `Domain` attribute, the cookie defaults to the current host only (no subdomains).
++ If you set `Domain=.example.com`, then all subdomains (like `shop.example.com` or `blog.example.com`) can also read it.
++ If you set `Domain=example.com` (without the leading dot), most browsers treat it as valid for the `domain` and its `subdomains` (per modern cookie spec).
+
+So, to make sure a cookie applies only to the main domain and not subdomains, **don't set the Domain attribute at all**.
+
+```javascript
+// Cookie only for example.com (not sub.example.com)
+document.cookie = "user=JohnDoe; path=/; expires=Fri, 20 Sep 2025 12:00:00 UTC";
+
+// Explicitly set it, use full host (not recommended for portability)
+document.cookie = "user=JohnDoe; domain=www.example.com; path=/";
 ```
 
 ## Express
